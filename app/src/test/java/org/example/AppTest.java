@@ -1,39 +1,30 @@
 package org.example;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
-class AppTest {
+public class AppTest {
 
     @Test
-    void testInitialBoardState() {
-        App game = new App();
-        char[] expectedBoard = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+    void testBoardInitialization() {
+        Game game = new Game();
+        char[] expectedBoard = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
         assertArrayEquals(expectedBoard, game.getBoard());
     }
 
     @Test
-    void testValidMove() {
-        App game = new App();
+    void testMakeMove() {
+        Game game = new Game();
         assertTrue(game.makeMove(1));
+        assertFalse(game.makeMove(1)); // Should not allow repeated moves
+        assertFalse(game.makeMove(10)); // Out of bounds
     }
 
     @Test
-    void testInvalidMoveOutOfBounds() {
-        App game = new App();
-        assertFalse(game.makeMove(10));
-    }
-
-    @Test
-    void testInvalidMoveAlreadyTaken() {
-        App game = new App();
-        game.makeMove(1);
-        assertFalse(game.makeMove(1));
-    }
-
-    @Test
-    void testWinCondition() {
-        App game = new App();
+    void testCheckWin() {
+        Game game = new Game();
         game.makeMove(1);
         game.makeMove(4);
         game.makeMove(2);
@@ -43,8 +34,8 @@ class AppTest {
     }
 
     @Test
-    void testDrawCondition() {
-        App game = new App();
+    void testDraw() {
+        Game game = new Game();
         game.makeMove(1);
         game.makeMove(2);
         game.makeMove(3);
@@ -57,4 +48,3 @@ class AppTest {
         assertTrue(game.isDraw());
     }
 }
-
