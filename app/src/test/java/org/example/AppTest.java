@@ -1,50 +1,53 @@
 package org.example;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AppTest {
 
     @Test
-    void testBoardInitialization() {
-        Game game = new Game();
-        char[] expectedBoard = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
-        assertArrayEquals(expectedBoard, game.getBoard());
-    }
-
-    @Test
-    void testMakeMove() {
+    void testValidAndInvalidMoves() {
         Game game = new Game();
         assertTrue(game.makeMove(1));
-        assertFalse(game.makeMove(1)); // Should not allow repeated moves
-        assertFalse(game.makeMove(10)); // Out of bounds
+        assertFalse(game.makeMove(1)); // Already taken
+        assertFalse(game.makeMove(10)); // Invalid
     }
 
     @Test
-    void testCheckWin() {
+    void testWinDetection() {
         Game game = new Game();
-        game.makeMove(1);
-        game.makeMove(4);
-        game.makeMove(2);
-        game.makeMove(5);
-        game.makeMove(3);
-        assertTrue(game.checkWin());
+        game.makeMove(1); // X
+        game.switchPlayer();
+        game.makeMove(4); // O
+        game.switchPlayer();
+        game.makeMove(2); // X
+        game.switchPlayer();
+        game.makeMove(5); // O
+        game.switchPlayer();
+        game.makeMove(3); // X wins
+        assertTrue(game.checkWin('X'));
+        assertFalse(game.checkWin('O'));
     }
 
     @Test
-    void testDraw() {
+    void testDrawDetection() {
         Game game = new Game();
-        game.makeMove(1);
-        game.makeMove(2);
-        game.makeMove(3);
-        game.makeMove(5);
-        game.makeMove(4);
-        game.makeMove(6);
-        game.makeMove(8);
-        game.makeMove(7);
-        game.makeMove(9);
+        int[] moves = {1, 2, 3, 5, 4, 6, 8, 7, 9};
+        for (int move : moves) {
+            game.makeMove(move);
+            if (!game.isDraw()) game.switchPlayer();
+        }
         assertTrue(game.isDraw());
+        assertFalse(game.checkWin('X'));
+        assertFalse(game.checkWin('O'));
+    }
+
+    @Test
+    void testGameLog() {
+        GameLog log = new GameLog();
+        log.logMove(1, 'X');
+        log.logMove(5, 'O');
+        log.logResult("X");
+        assertEquals(3, log.getLog().size());
     }
 }

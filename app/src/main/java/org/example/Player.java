@@ -1,7 +1,7 @@
 package org.example;
 
-class Player {
-    private char symbol;
+public class Player {
+    private final char symbol; // 'X' or 'O'
 
     public Player(char symbol) {
         this.symbol = symbol;
