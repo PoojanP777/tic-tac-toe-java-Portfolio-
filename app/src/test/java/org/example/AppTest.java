@@ -6,48 +6,58 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AppTest {
 
     @Test
-    void testValidAndInvalidMoves() {
-        Game game = new Game();
-        assertTrue(game.makeMove(1));
-        assertFalse(game.makeMove(1)); // Already taken
-        assertFalse(game.makeMove(10)); // Invalid
+    public void testComputerPlayerFirstMove() {
+        Board board = new Board();
+        ComputerPlayer computerPlayer = new ComputerPlayer("X");
+        int move = computerPlayer.getMove(board);
+        assertTrue(move == 0 || move == 2 || move == 6 || move == 8, "Computer should choose a corner for the first move.");
     }
 
     @Test
-    void testWinDetection() {
-        Game game = new Game();
-        game.makeMove(1); // X
-        game.switchPlayer();
-        game.makeMove(4); // O
-        game.switchPlayer();
-        game.makeMove(2); // X
-        game.switchPlayer();
-        game.makeMove(5); // O
-        game.switchPlayer();
-        game.makeMove(3); // X wins
-        assertTrue(game.checkWin('X'));
-        assertFalse(game.checkWin('O'));
+    public void testComputerPlayerSecondMove() {
+        Board board = new Board();
+        board.makeMove(0, "X"); // Human makes a move
+        ComputerPlayer computerPlayer = new ComputerPlayer("O");
+        int move = computerPlayer.getMove(board);
+        assertEquals(4, move, "Computer should choose the center for the second move if it's available.");
     }
 
     @Test
-    void testDrawDetection() {
-        Game game = new Game();
-        int[] moves = {1, 2, 3, 5, 4, 6, 8, 7, 9};
-        for (int move : moves) {
-            game.makeMove(move);
-            if (!game.isDraw()) game.switchPlayer();
-        }
-        assertTrue(game.isDraw());
-        assertFalse(game.checkWin('X'));
-        assertFalse(game.checkWin('O'));
+    public void testComputerPlayerWinningMove() {
+        Board board = new Board();
+        board.makeMove(0, "X");
+        board.makeMove(1, "X");
+        ComputerPlayer computerPlayer = new ComputerPlayer("O");
+        board.makeMove(2, "O"); // Computer needs to make a move to not lose.
+        board.makeMove(3, "X");
+        board.makeMove(4, "X");
+        int move = computerPlayer.getMove(board);
+        assertEquals(5, move, "Computer should choose the winning move.");
     }
 
     @Test
-    void testGameLog() {
-        GameLog log = new GameLog();
-        log.logMove(1, 'X');
-        log.logMove(5, 'O');
-        log.logResult("X");
-        assertEquals(3, log.getLog().size());
+    public void testComputerPlayerBlockingMove() {
+        Board board = new Board();
+        board.makeMove(0, "X");
+        board.makeMove(1, "X");
+        ComputerPlayer computerPlayer = new ComputerPlayer("O");
+        int move = computerPlayer.getMove(board);
+        assertEquals(2, move, "Computer should block the opponent's winning move.");
+    }
+
+    @Test
+    public void testComputerPlayerRandomMove() {
+        Board board = new Board();
+        board.makeMove(0, "X");
+        board.makeMove(1, "X");
+        board.makeMove(2,"O");
+        board.makeMove(3,"X");
+        board.makeMove(4,"O");
+        board.makeMove(5,"X");
+        board.makeMove(6,"O");
+        board.makeMove(7,"X");
+        ComputerPlayer computerPlayer = new ComputerPlayer("O");
+        int move = computerPlayer.getMove(board);
+        assertEquals(8, move, "Computer should make the last move.");
     }
 }

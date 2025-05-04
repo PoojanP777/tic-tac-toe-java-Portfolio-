@@ -5,56 +5,41 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        GameStats stats = new GameStats();
 
-        while (true) {
-            Game game = new Game();
-            GameLog log = new GameLog();
-            boolean gameOver = false;
+        System.out.println("Welcome to Tic-Tac-Toe!");
+        System.out.println();
+        System.out.println("What kind of game would you like to play?");
+        System.out.println("1. Human vs. Human");
+        System.out.println("2. Human vs. Computer");
+        System.out.println("3. Computer vs. Human");
+        System.out.println();
+        System.out.print("What is your selection? ");
 
-            while (!gameOver) {
-                displayBoard(game.getBoard());
-                System.out.print("Player " + game.getCurrentPlayer() + ", enter position (1-9): ");
-                int move = scanner.nextInt();
+        int gameTypeChoice = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline
 
-                if (game.makeMove(move)) {
-                    log.logMove(move, game.getCurrentPlayer());
-
-                    if (game.checkWin(game.getCurrentPlayer())) {
-                        displayBoard(game.getBoard());
-                        System.out.println("Player " + game.getCurrentPlayer() + " wins!");
-                        log.logResult(String.valueOf(game.getCurrentPlayer()));
-                        stats.updateStats(String.valueOf(game.getCurrentPlayer()));
-                        gameOver = true;
-                    } else if (game.isDraw()) {
-                        displayBoard(game.getBoard());
-                        System.out.println("It's a draw!");
-                        log.logResult("Draw");
-                        stats.updateStats("Draw");
-                        gameOver = true;
-                    } else {
-                        game.switchPlayer();
-                    }
-                } else {
-                    System.out.println("Invalid move. Try again.");
-                }
-            }
-
-            // Ask to play again
-            System.out.print("Play again? (y/n): ");
-            if (!scanner.next().equalsIgnoreCase("y")) break;
+        if (gameTypeChoice == 1) {
+            Player player1 = new HumanPlayer("X");
+            Player player2 = new HumanPlayer("O");
+            Game game = new Game(player1, player2);
+            game.play();
+        } else if (gameTypeChoice == 2) {
+            Player humanPlayer = new HumanPlayer("X");
+            Player computerPlayer = new ComputerPlayer("O");
+            System.out.println("\nOkay, you will go first."); // Implicit: Human goes first
+            Game game = new Game(humanPlayer, computerPlayer);
+            game.play();
+        } else if (gameTypeChoice == 3) {
+            Player humanPlayer = new HumanPlayer("O");
+            Player computerPlayer = new ComputerPlayer("X");
+            System.out.println("\nGreat! The computer will go first."); // Implicit: Computer goes first
+            Game game = new Game(computerPlayer, humanPlayer);
+            game.play();
+        } else {
+            System.out.println("Invalid selection. Please try again.");
         }
 
-        stats.printStats();
-        System.out.println("Thanks for playing!");
-    }
-
-    private static void displayBoard(char[] board) {
-        System.out.println();
-        for (int i = 0; i < board.length; i += 3) {
-            System.out.printf(" %c | %c | %c\n", board[i], board[i+1], board[i+2]);
-            if (i < 6) System.out.println("---+---+---");
-        }
-        System.out.println();
+        scanner.close();
     }
 }
+

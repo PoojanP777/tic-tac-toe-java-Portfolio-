@@ -1,21 +1,44 @@
 package org.example;
 
 public class GameStats {
-    private int xWins = 0;
-    private int oWins = 0;
-    private int draws = 0;
+    private int humanWins;
+    private int computerWins;
+    private int ties;
 
-    public void updateStats(String result) {
-        switch (result) {
-            case "X": xWins++; break;
-            case "O": oWins++; break;
-            case "Draw": draws++; break;
-        }
+    public GameStats() {
+        this.humanWins = 0;
+        this.computerWins = 0;
+        this.ties = 0;
     }
 
-    public void printStats() {
-        System.out.println("X Wins: " + xWins);
-        System.out.println("O Wins: " + oWins);
-        System.out.println("Draws: " + draws);
+    public void incrementHumanWins() {
+        this.humanWins++;
+    }
+
+    public void incrementComputerWins() {
+        this.computerWins++;
+    }
+
+    public void incrementTies() {
+        this.ties++;
+    }
+
+    public int getHumanWins() {
+        return humanWins;
+    }
+
+    public int getComputerWins() {
+        return computerWins;
+    }
+
+    public int getTies() {
+        return ties;
+    }
+
+    public void displayStats() {
+        System.out.println("Game Stats:");
+        System.out.println("Human Wins: " + humanWins);
+        System.out.println("Computer Wins: " + computerWins);
+        System.out.println("Ties: " + ties);
     }
 }

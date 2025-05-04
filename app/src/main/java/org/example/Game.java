@@ -1,49 +1,59 @@
 package org.example;
 
 public class Game {
-    private char[] board;
-    private char currentPlayer;
+    private Player player1;
+    private Player player2;
+    private Board board;
+    private String currentPlayerSymbol;
 
-    public Game() {
-        board = new char[9];
-        for (int i = 0; i < 9; i++) board[i] = ' ';
-        currentPlayer = 'X';
+    public Game(Player player1, Player player2) {
+        this.player1 = player1;
+        this.player2 = player2;
+        this.board = new Board();
+        this.currentPlayerSymbol = "X"; // Start with X
     }
 
-    public char[] getBoard() {
-        return board;
-    }
+    public void play() {
+        // ... (rest of your Game.java code, but adapted to use Player objects)
+        while (!board.isGameOver()) {
+            board.displayBoard(); // Assuming you have this.
 
-    public char getCurrentPlayer() {
-        return currentPlayer;
-    }
+            Player currentPlayer;
+            if (currentPlayerSymbol.equals(player1.getSymbol()))
+            {
+                currentPlayer = player1;
+            }
+            else{
+                currentPlayer = player2;
+            }
 
-    public void switchPlayer() {
-        currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
-    }
+            int move = currentPlayer.getMove(board);
 
-    public boolean makeMove(int position) {
-        if (position < 1 || position > 9 || board[position - 1] != ' ') return false;
-        board[position - 1] = currentPlayer;
-        return true;
-    }
+            if (board.isSpaceEmpty(move)) {
+                board.makeMove(move, currentPlayerSymbol);
 
-    public boolean checkWin(char player) {
-        int[][] winPatterns = {
-            {0, 1, 2}, {3, 4, 5}, {6, 7, 8}, // rows
-            {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, // cols
-            {0, 4, 8}, {2, 4, 6}             // diagonals
-        };
-        for (int[] pattern : winPatterns) {
-            if (board[pattern[0]] == player &&
-                board[pattern[1]] == player &&
-                board[pattern[2]] == player) return true;
+                if (board.isGameOver()) {
+                    board.displayBoard();
+                    if (board.checkWinner() != null)
+                    {
+                         System.out.println("Player " + board.checkWinner() + " wins!");
+                    }
+                    else{
+                        System.out.println("It's a tie!");
+                    }
+
+                }
+                else{
+                    switchPlayer();
+                }
+
+            } else {
+                System.out.println("Invalid move. Try again.");
+            }
         }
-        return false;
     }
 
-    public boolean isDraw() {
-        for (char c : board) if (c == ' ') return false;
-        return true;
+    private void switchPlayer() {
+        currentPlayerSymbol = (currentPlayerSymbol.equals(player1.getSymbol())) ? player2.getSymbol() : player1.getSymbol();
     }
 }

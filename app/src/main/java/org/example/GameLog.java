@@ -1,20 +1,29 @@
 package org.example;
 
+
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameLog {
-    private final List<String> log = new ArrayList<>();
+    private List<String> moves;
 
-    public void logMove(int position, char player) {
-        log.add("Player " + player + " moved to position " + position);
+    public GameLog() {
+        this.moves = new ArrayList<>();
     }
 
-    public void logResult(String result) {
-        log.add("Result: " + result);
+    public void addMove(String move) {
+        this.moves.add(move);
     }
 
-    public List<String> getLog() {
-        return log;
+    public List<String> getMoves() {
+        return moves;
+    }
+
+    public void displayLog() {
+        System.out.println("Game Log:");
+        for (int i = 0; i < moves.size(); i++) {
+            System.out.println((i + 1) + ". " + moves.get(i));
+        }
     }
 }

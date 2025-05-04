@@ -1,13 +1,19 @@
 package org.example;
 
-public class Player {
-    private final char symbol; // 'X' or 'O'
+public abstract class Player {
+    private String symbol;
 
-    public Player(char symbol) {
+    public Player(String symbol) {
         this.symbol = symbol;
     }
 
-    public char getSymbol() {
+    public String getSymbol() {
         return symbol;
     }
+
+    public void setSymbol(String symbol){
+        this.symbol = symbol;
+    }
+
+    public abstract int getMove(Board board);
 }
