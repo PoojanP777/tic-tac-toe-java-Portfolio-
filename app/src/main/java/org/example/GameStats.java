@@ -1,5 +1,6 @@
 package org.example;
 
+
 public class GameStats {
     private int humanWins;
     private int computerWins;
@@ -21,6 +22,19 @@ public class GameStats {
 
     public void incrementTies() {
         this.ties++;
+    }
+
+    // New methods to increment by a given value
+    public void incrementHumanWins(int wins) {
+        this.humanWins += wins;
+    }
+
+    public void incrementComputerWins(int wins) {
+        this.computerWins += wins;
+    }
+
+    public void incrementTies(int ties) {
+        this.ties += ties;
     }
 
     public int getHumanWins() {

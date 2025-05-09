@@ -1,0 +1,206 @@
+It's a tie!
+Game Log:
+  X moves to 4
+  O moves to 6
+  X moves to 0
+  O moves to 8
+  X moves to 7
+  O moves to 1
+  X moves to 3
+  O moves to 5
+  X moves to 2
+---
+Player O wins!
+Game Log:
+  X moves to 8
+  O moves to 4
+  X moves to 5
+  O moves to 2
+  X moves to 7
+  O moves to 6
+---
+It's a tie!
+Game Log:
+  X moves to 0
+  O moves to 4
+  X moves to 2
+  O moves to 1
+  X moves to 7
+  O moves to 3
+  X moves to 5
+  O moves to 8
+  X moves to 6
+---
+Player X wins!
+Game Log:
+  X moves to 4
+  O moves to 0
+  X moves to 3
+  O moves to 5
+  X moves to 2
+  O moves to 1
+  X moves to 6
+---
+It's a tie!
+Game Log:
+  X moves to 4
+  O moves to 1
+  X moves to 0
+  O moves to 8
+  X moves to 2
+  O moves to 6
+  X moves to 7
+  O moves to 3
+  X moves to 5
+---
+Player O wins!
+Game Log:
+  X moves to 4
+  O moves to 8
+  X moves to 2
+  O moves to 6
+  X moves to 5
+  O moves to 7
+---
+Player X wins!
+Game Log:
+  X moves to 0
+  O moves to 1
+  X moves to 3
+  O moves to 4
+  X moves to 6
+---
+It's a tie!
+Game Log:
+  X moves to 0
+  O moves to 4
+  X moves to 6
+  O moves to 3
+  X moves to 5
+  O moves to 1
+  X moves to 7
+  O moves to 8
+  X moves to 2
+---
+Player X wins!
+Game Log:
+  X moves to 6
+  O moves to 0
+  X moves to 3
+  O moves to 8
+  X moves to 4
+  O moves to 5
+  X moves to 2
+---
+Player X wins!
+Game Log:
+  X moves to 0
+  O moves to 2
+  X moves to 3
+  O moves to 8
+  X moves to 6
+---
+Player O wins!
+Game Log:
+  X moves to 4
+  O moves to 0
+  X moves to 2
+  O moves to 6
+  X moves to 8
+  O moves to 3
+---
+It's a tie!
+Game Log:
+  X moves to 0
+  O moves to 4
+  X moves to 8
+  O moves to 3
+  X moves to 5
+  O moves to 2
+  X moves to 6
+  O moves to 7
+  X moves to 1
+---
+Player X wins!
+Game Log:
+  X moves to 4
+  O moves to 1
+  X moves to 0
+  O moves to 8
+  X moves to 3
+  O moves to 5
+  X moves to 6
+---
+Player X wins!
+Game Log:
+  X moves to 0
+  O moves to 7
+  X moves to 8
+  O moves to 5
+  X moves to 4
+---
+Player O wins!
+Game Log:
+  X moves to 4
+  O moves to 6
+  X moves to 0
+  O moves to 8
+  X moves to 2
+  O moves to 7
+---
+Player X wins!
+Game Log:
+  X moves to 2
+  O moves to 4
+  X moves to 5
+  O moves to 3
+  X moves to 8
+---
+Player X wins!
+Game Log:
+  X moves to 6
+  O moves to 1
+  X moves to 7
+  O moves to 8
+  X moves to 2
+  O moves to 0
+  X moves to 4
+---
+Player X wins!
+Game Log:
+  X moves to 6
+  O moves to 7
+  X moves to 4
+  O moves to 2
+  X moves to 0
+  O moves to 3
+  X moves to 8
+---
+Player X wins!
+Game Log:
+  X moves to 0
+  O moves to 4
+  X moves to 1
+  O moves to 5
+  X moves to 2
+---
+It's a tie!
+Game Log:
+  X moves to 4
+  O moves to 7
+  X moves to 2
+  O moves to 6
+  X moves to 8
+  O moves to 5
+  X moves to 1
+  O moves to 0
+  X moves to 3
+---
+Player X wins!
+Game Log:
+  X moves to 8
+  O moves to 4
+  X moves to 7
+  O moves to 1
+  X moves to 6
+---
